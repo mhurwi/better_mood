@@ -1,0 +1,16 @@
+<h1>create a description</h1>
+
+<input type="text" ng-model="cbtEvent.description">
+
+<a href="#" ng-click="createEvent(cbtEvent)">Create New Event</a>
+
+<br>
+<a href="#" ng-click="getEvent('52a486564d61726fb31b0000')">Get Event</a>
+
+<p>{{ ourNewCbtEvent.description }}</p>
+
+<hr>
+<a href="#" ng-click="listEvents()">List all events</a>
+<ul ng-repeat="cbtEvent in allEvents">
+	<li>{{cbtEvent.description}}</li>
+</ul>

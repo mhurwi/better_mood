@@ -5,7 +5,7 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
-gem 'turbolinks'
+# gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass', '>= 3.0.0.0'
 gem 'cancan'
@@ -13,6 +13,15 @@ gem 'devise'
 gem 'mongoid', :github=>"mongoid/mongoid"
 gem 'rolify'
 gem 'simple_form'
+
+gem 'rails_config'
+gem "active_model_serializers"
+
+gem "pry"
+gem "pry-rails"
+gem "pry-remote"
+gem "pry-nav"
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
