@@ -1,4 +1,8 @@
-var cbtApp = angular.module('cbtApp',['cbtAppRoutes']);
+var cbtApp = angular.module('cbtApp',[
+		'ngResource',
+		'cbtAppRoutes', 
+		'cbtAppServices'
+	]);
 
 cbtApp.config(function($httpProvider){
 	authToken = $("meta[name=\"csrf-token\"]").attr("content")

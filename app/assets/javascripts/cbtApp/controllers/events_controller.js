@@ -1,9 +1,14 @@
 // var cbtApp = angular.module('cbtApp');
 
-cbtApp.controller('EventCtrl', ['$scope', function($scope) {
+cbtApp.controller('EventCtrl', ['$scope', '$http', function($scope, $http) {
 	$scope.data = {
 		description: "I ate too much"
 	};
+
+	$scope.getEvents = function() {
+		$scope.events = ListEvents.get()
+	}
+
 
 	$scope.listEvents = function() {
 		$http.get("/api/events")

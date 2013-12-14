@@ -1,2 +1,10 @@
-<h1>Events List!</h1>
-<create></create>
+<h1>Events List</h1> 
+<a href="/events#/new">New event</a>
+
+<div ng-controller="EventsListCtrl">
+	<ul ng-repeat="event in allMyEvents">
+		<li>
+			<a href="/events#/show/{{event.id}}">{{event.description}}</a>
+		</li>
+	</ul>
+</div>
