@@ -9,17 +9,21 @@ cbtAppRoutes.config(function($stateProvider, $urlRouterProvider){
 		.state('events', {
 			url: '/',
 			templateUrl: "/api/templates/events_list.html",
-			onEnter: function() { console.log('template loaded using router!')}
-		})
-		.state('new_event', {
-			url: '/new',
-			templateUrl: "/api/templates/create_description.html",
-			onEnter: function() { console.log('template loaded using router!')}
 		})
 		.state('show', {
 			url: '/show/:id',
 			templateUrl: "/api/templates/show_event.html",
-			onEnter: function() { console.log('template loaded using router!')}
+		})
+		.state('new', {
+			url: '/new',
+			templateUrl: "/api/templates/new_event.html",
+		})
+		.state('new.description', {
+			url: '/description',
+			templateUrl: "/api/templates/create_description.html",
+			data: {
+				activeState: "description"
+			}
 		})
 
 })

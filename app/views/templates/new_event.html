@@ -1,0 +1,18 @@
+<div ng-controller="EventCreateCtrl">
+
+	<h1>New Event</h1>
+	<p>Great to see you!</p>
+
+	<div class="cbtSteps">
+		<p ng-show="activeState == 'new.description'">First, <a href="events#/new/description">describe what happened</a></p>
+		<p ng-show="activeState == 'new.feelingsBefore'">Next, <a href="events#/new/feelings-before">tell us how you are feeling.</a></p>	
+		<p>Time to <a href="events#/new/automatic-thougts">list all the thoughts that automatically popped into your head</a></p>
+		<p><a href="events#/new/distortons">Can you spot the distortions in each of your thoughts?</a></p>
+		<p></p>
+	</div>
+
+
+
+	<div ui-view></div>	
+
+</div>
