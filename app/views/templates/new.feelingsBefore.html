@@ -1,6 +1,6 @@
 <div>
-	<p>feelings: {{ feelings }}</p>
-	<p>Description: {{ cbtEvent.description }}</p>
+	<p>Event description: {{ cbtEvent.description }}</p>
+	<p>feelings: {{ cbtEvent.feelings }}</p>
 
 	<table>
 		<thead>
@@ -11,19 +11,23 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="feeling in feelings">
+			<tr ng-repeat="feeling in cbtEvent.feelings">
 				<td><input type="text" ng-model="feeling.name"></td>
 				<td><input type="number" ng-model="feeling.amountBefore"></td>
-				<td><button ng-click="removeFeeling($index)">X</button></td>
+				<td><button ng-click="removeFeeling(cbtEvent, $index)">X</button></td>
 			</tr>
 		</tbody>
 
 	</table>
 
-	<button ng-click="addFeeling()">Add another feeling</button>
+	<button ng-click="addFeeling(cbtEvent)">Add another feeling</button>
 
 	<br>
 
-	<button update-feelings data-id="{{cbtEventId}}">Save and go to next step</button>
+	<button ng-click="updateEvent(cbtEvent)">Save</button>
 
 </div>
+
+
+<p>debug event</p>
+{{ cbtEvent}}

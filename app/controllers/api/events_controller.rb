@@ -26,6 +26,7 @@ module  Api
     def update
       @event = Event.find(params[:id])
       @event.update_attributes(safe_params)
+      @event.update_attributes(feelings: params["event"]["feelings"]) if params["event"]["feelings"]
       respond_with @event
     end
 

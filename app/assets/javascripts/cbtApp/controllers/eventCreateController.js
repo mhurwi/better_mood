@@ -1,22 +1,14 @@
 cbtApp.controller('EventCreateCtrl', ['$scope', '$http', '$stateParams', '$state', function($scope, $http, $stateParams, $state) {
 
 
-
 	///////////
 	// Feelings
-	$scope.feelings = [{"name":"", "amountBefore": null}]	
-	$scope.addFeeling = function(){
-		$scope.feelings.push({"name": "", "amountBefore": null})
+	$scope.addFeeling = function(cbtEvent){
+		cbtEvent.feelings.push({"name": "", "amountBefore": null})
 	}
-	$scope.removeFeeling = function(index){
-		$scope.feelings.splice(index, 1)
+	$scope.removeFeeling = function(cbtEvent, index){
+		cbtEvent.feelings.splice(index, 1)
 	}
-
-
-
-
-
-
 
 
 	//////////////
