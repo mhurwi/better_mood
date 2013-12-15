@@ -7,6 +7,8 @@ cbtApp.directive('listEvents', ['$http', function($http){
 		}
 	}])
 
+
+
 cbtApp.directive('deleteEvent',['$http', '$state', function($http, $state){
 	return function(scope, elem, attrs) {
 		elem.bind ("mousedown", function () {
@@ -45,19 +47,3 @@ cbtApp.directive('createEvent', ['$http', '$state', function($http, $state){
 	}
 }])
 
-cbtApp.directive('updateEvent', ['$http', '$state', function($http, $state){
-	return function(scope, elem, attrs){
-		elem.bind("mousedown", function(){
-			$http.put(
-				"/api/events/" + attrs.id,
-				{description: scope.cbtEvent.description}
-			)
-			.success(function(data, status, headers, config){
-				console.log("Success!")
-				console.log(data)
-				$state.go('new.feelingsBefore', {"id": scope.cbtEventId})
-				$scope.cbtEvent = data
-			})
-		})
-	}
-}])

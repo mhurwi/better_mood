@@ -1,23 +1,22 @@
-// var cbtApp = angular.module('cbtApp');
-
-cbtApp.controller('EventCtrl', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams) {
+cbtApp.controller('EventCtrl', ['CbtEvent', '$scope', '$http', '$stateParams', function(CbtEvent, $scope, $http, $stateParams) {
 	
-	$scope.cbtEvent = {}
-
 	//////////////////////////
 	// CRUD Methods for Event
-	$scope.listEvents = function() {
-		$http.get("/api/events")
-			.success(function(data){
-				$scope.allEvents = data
-			})
-	}
 	$scope.getEvent = function(eventId) {
-		$http.get("/api/events/" + eventId)
-			.success(function(data){
-				$scope.cbtEvent = data
-			})
+		CbtEvent.get({id: eventId}, function(data){
+			console.log(data)
+			$scope.cbtEvent = data
+		})
+	}
+
+	$scope.updateEvent = function(cbtEvent) {
+		CbtEvent.update({id: cbtEvent.id}, {event: cbtEvent }, function(data){
+			$scope.cbtEvent = data.event;
+		}, function(error){
+			return false
+		})
 	}
 
 
-} ]);
+
+}]);

@@ -1,14 +1,34 @@
 cbtApp.controller('EventCreateCtrl', ['$scope', '$http', '$stateParams', '$state', function($scope, $http, $stateParams, $state) {
 
-	console.log("current state: " + $state.current.name)
 
-	$scope.cbtEventId = $stateParams["id"]
-	
+
+	///////////
+	// Feelings
+	$scope.feelings = [{"name":"", "amountBefore": null}]	
+	$scope.addFeeling = function(){
+		$scope.feelings.push({"name": "", "amountBefore": null})
+	}
+	$scope.removeFeeling = function(index){
+		$scope.feelings.splice(index, 1)
+	}
+
+
+
+
+
+
 
 
 	//////////////
 	// Wizard Code
-	console.log("step: " + $state.current.data.step)
+	console.log("current state: " + $state.current.name)
+	console.log("current step: " + $state.current.data.step)
+
+	// We want to get the newly updated event each time
+	// that we move to a new step in the wizard
+	$scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
+		$scope.getEvent(toParams.id)
+	})
 
 	$scope.activeState = $state.current.name;
 	$scope.step = $state.current.data.step
@@ -22,7 +42,7 @@ cbtApp.controller('EventCreateCtrl', ['$scope', '$http', '$stateParams', '$state
 	}
 
 	$scope.firstStep = function(){
-		return $state.current.data.step == 0;
+		return $state.current.data.step == 1;
 	}
 
 	$scope.lastStep = function(){

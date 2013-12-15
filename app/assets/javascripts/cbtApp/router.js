@@ -21,14 +21,7 @@ cbtAppRoutes.config(function($stateProvider, $urlRouterProvider){
 			templateUrl: "/api/templates/new_event.html",
 			data: {
 				step: 0
-			}
-		})
-		.state('new.instructions', {
-			url: '/instructions',
-			templateUrl: "/api/templates/new.instructions.html",
-			data: {
-				step: 0
-			}
+			},
 		})
 		.state('new.description', {
 			url: '/description/',

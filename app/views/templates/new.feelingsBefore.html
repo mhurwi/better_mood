@@ -1,11 +1,29 @@
 <div>
-<p>event: {{cbtEvent}}</p>
-<p>Description: {{ cbtEvent.description }}</p>
-	<p>feelings before</p>
-	<p>Tell us how strongly you are feeling an emotion, from 1 to 10.</p>	
+	<p>feelings: {{ feelings }}</p>
+	<p>Description: {{ cbtEvent.description }}</p>
 
-		<p>
-		Next, <a ui-sref="new.automaticThoughts">record each thought that automatically popped in your head.</a>
-	</p>
+	<table>
+		<thead>
+			<tr>
+				<td>Feeling</td>
+				<td>How strongly you are feeling it</td>
+				<td></td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="feeling in feelings">
+				<td><input type="text" ng-model="feeling.name"></td>
+				<td><input type="number" ng-model="feeling.amountBefore"></td>
+				<td><button ng-click="removeFeeling($index)">X</button></td>
+			</tr>
+		</tbody>
+
+	</table>
+
+	<button ng-click="addFeeling()">Add another feeling</button>
+
+	<br>
+
+	<button update-feelings data-id="{{cbtEventId}}">Save and go to next step</button>
 
 </div>

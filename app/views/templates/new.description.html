@@ -1,16 +1,11 @@
 <div> 
-	<p>event ID: {{ cbtEventId }}</p>
-	<p>event: {{ cbtEvent }}</p>
+	<p>event id: {{ cbtEvent.id }}</p>
+	<p>event description: {{ cbtEvent.description }}</p>
 	<p>Describe what happened</p>	
 
-	<input type="text" ng-model="cbtEvent.description">
+	<input type="text" ng-model="cbtEvent['description']">
 
-	
+	<button ng-click="updateEvent(cbtEvent)">UpdateEvent</button>
 
-	<p>{{ cbtEvent.description }}</p>
-
-	<p>
-		<a href="#" update-event data-id="{{cbtEventId}}">Update Event</a>
-	</p>
 
 </div>
