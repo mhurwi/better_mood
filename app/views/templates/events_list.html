@@ -1,11 +1,10 @@
 <h1>Events List</h1> 
-<a href="/events#/new">New event</a>
+<button create-event>New event</button>
 
-<div ng-controller="EventsListCtrl">
+<div list-events>
 	<ul ng-repeat="event in allMyEvents">
 		<li>
 			<a href="/events#/show/{{event.id}}">{{event.description}}</a>
-			<button delete-event data-id="{{event.id}}">x</button>
 		</li>
 	</ul>
 </div>

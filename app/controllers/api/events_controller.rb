@@ -18,15 +18,21 @@ module  Api
     end
 
   	def create
-  		@event = Event.new(safe_params)
+  		@event = Event.new
   		@event.save
   		respond_with @event
   	end
 
+    def update
+      @event = Event.find(params[:id])
+      @event.update_attributes(safe_params)
+      respond_with @event
+    end
+
     def destroy
       event = Event.find(params[:id])
       event.remove
-      respond_with data = {message: "Success! Destroyed!"}
+      head :ok
     end
 
 

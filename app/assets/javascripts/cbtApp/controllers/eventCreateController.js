@@ -2,6 +2,8 @@ cbtApp.controller('EventCreateCtrl', ['$scope', '$http', '$stateParams', '$state
 
 	console.log("current state: " + $state.current.name)
 
+	$scope.cbtEventId = $stateParams["id"]
+	
 
 
 	//////////////

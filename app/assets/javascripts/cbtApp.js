@@ -4,6 +4,11 @@ var cbtApp = angular.module('cbtApp',[
 		'cbtAppServices'
 	]);
 
+angular.module("cbtApp").run(function ($rootScope, $state, $stateParams) {
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
+});
+
 cbtApp.config(function($httpProvider){
 	authToken = $("meta[name=\"csrf-token\"]").attr("content")
 	$httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken

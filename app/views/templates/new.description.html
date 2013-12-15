@@ -1,16 +1,16 @@
 <div> 
-
+	<p>event ID: {{ cbtEventId }}</p>
+	<p>event: {{ cbtEvent }}</p>
 	<p>Describe what happened</p>	
-
 
 	<input type="text" ng-model="cbtEvent.description">
 
-	<a href="#" ng-click="createEvent(cbtEvent)">Create New Event</a>
+	
 
-	<p>{{ ourNewCbtEvent.description }}</p>
+	<p>{{ cbtEvent.description }}</p>
 
 	<p>
-		Next, <a ui-sref="new.feelingsBefore">tell us how you are feeling.</a>
+		<a href="#" update-event data-id="{{cbtEventId}}">Update Event</a>
 	</p>
 
 </div>
