@@ -3,4 +3,5 @@ class Event
 
 	field :description
 	field :feelings, default: []
+	field :thoughts, default: []
 end

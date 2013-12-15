@@ -10,6 +10,23 @@ cbtApp.controller('EventCreateCtrl', ['$scope', '$http', '$stateParams', '$state
 		cbtEvent.feelings.splice(index, 1)
 	}
 
+	///////////
+	// Thoughts
+	$scope.addThought = function(cbtEvent){
+		cbtEvent.thoughts.push({"automaticThought":"", "distortions":[{"name":""}], "rationalThought":""})
+	}
+	$scope.removeThought = function(cbtEvent, index){
+		cbtEvent.thoughts.splice(index, 1)
+	}
+
+	///////////
+	// Distortions
+	$scope.addDistortion = function(thought){
+		thought.distortions.push({"name":""})
+	}
+	$scope.removeDistortion = function(thought, index){
+		thought.distortions.splice(index, 1)
+	}
 
 	//////////////
 	// Wizard Code

@@ -1,8 +1,25 @@
 <div>
-{{ cbtEvent }}
-<p>Record each thought that popped into your head.</p>
-		<p>
-		Next, <a ui-sref="new.distortions">can you spot the distortions in each of these thoughts?</a>
-	</p>
+	<table>
+		<thead>
+			<tr>
+				<td>Thought</td>
+				<td></td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="thought in cbtEvent.thoughts">
+				<td><input type="text" ng-model="thought.automaticThought"></td>
+				<td><button ng-click="removethought(cbtEvent, $index)">X</button></td>
+			</tr>
+		</tbody>
+
+	</table>
+
+	<button ng-click="addThought(cbtEvent)">Add another thought</button>
+
+	<br>
+
+	<button ng-click="updateEvent(cbtEvent)">Save</button>
 
 </div>
+

@@ -1,3 +1,34 @@
-<div>
-	<p>review</p>
-</div>
+<h2>Yay! You are in a better mood now!</h2>
+<p>You started by describing this event:</p>
+<p>{{ cbtEvent.description}}</p>
+
+<p>And you first had these feelings:</p>
+<ul>
+	<li ng-repeat="feeling in cbtEvent.feelings">
+		{{ feeling.name }}, intensity of {{ feeling.amountBefore }}
+	</li>
+</ul>
+
+<p>You listed your automatic thoughts and spotted some distortions:</p>
+<ul ng-repeat="thought in cbtEvent.thoughts">
+	<li>{{ thought.automaticThought }}</li>
+	<li ng-repeat="distortion in thought.distortions">
+		{{ distortion.name }}
+	</li>
+</ul>
+
+<p>And you were able to provide a rational alternative to each of those thoughts:</p>
+<ul>
+	<li ng-repeat="thought in cbtEvent.thoughts">{{ thought.rationalThought }}</li>
+</ul>
+
+<p>Then you went back over your feelings to see how strongly you felt them after all this.</p>
+
+<ul>
+	<li ng-repeat="feeling in cbtEvent.feelings">
+		Now you feel {{ feeling.name }} at a {{ feeling.amountAfter }}. {{ feeling.amountBefore - feeling.amountAfter}} change!
+	</li>
+</ul>
+
+<p>Do you feel better? Hurray!</p>
+<p>Give a tweet!  Post to your facebook! Tell everyone!</p>

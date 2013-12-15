@@ -1,7 +1,26 @@
 <div>
-<p>Provide a rational alternative for each thought.</p>
-		<p>
-		Next, <a ui-sref="new.feelingsAfter"> go back and see if your feelings have changed.</a>
-	</p>
+
+<table>
+		<thead>
+			<tr>
+				<td>Thought</td>
+				<td>Rational Version</td>
+				<td></td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="thought in cbtEvent.thoughts">
+				<td><p>{{thought.automaticThought}}</p></td>
+				<td>
+					<input type="text" ng-model="thought.rationalThought">
+				</td>
+			</tr>
+		</tbody>
+
+	</table>
+
+
+	<button ng-click="updateEvent(cbtEvent)">Save</button>
+
 
 </div>

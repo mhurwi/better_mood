@@ -1,7 +1,26 @@
 <div>
-<p>In the beginning, you listed how you felt.  Go back and indicate how strongly you are now feeling.</p>
-		<p>
-		Lastly, <a ui-sref="new.review">review this event.</a>
-	</p>
+
+<table>
+		<thead>
+			<tr>
+				<td>Feelings</td>
+				<td>Feeling now?</td>
+				<td></td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="feeling in cbtEvent.feelings">
+				<td>{{feeling.name}}</td>
+				<td>
+					<input type="number" ng-model="feeling.amountAfter">
+				</td>
+			</tr>
+		</tbody>
+
+	</table>
+
+
+	<button ng-click="updateEvent(cbtEvent)">Save</button>
+
 
 </div>
