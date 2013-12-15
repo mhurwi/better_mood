@@ -1,6 +1,11 @@
 cbtApp.controller('EventCreateCtrl', ['$scope', '$http', '$stateParams', '$state', function($scope, $http, $stateParams, $state) {
 
 	console.log("current state: " + $state.current.name)
+
+
+
+	//////////////
+	// Wizard Code
 	console.log("step: " + $state.current.data.step)
 
 	$scope.activeState = $state.current.name;
@@ -8,6 +13,10 @@ cbtApp.controller('EventCreateCtrl', ['$scope', '$http', '$stateParams', '$state
 
 	$scope.getCurrentStep = function() {
 		return $state.current.data.step;
+	}
+
+	$scope.getCurrentStateName = function() {
+		return $state.current.name;
 	}
 
 	$scope.firstStep = function(){

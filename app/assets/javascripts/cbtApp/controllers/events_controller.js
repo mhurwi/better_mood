@@ -5,6 +5,9 @@ cbtApp.controller('EventCtrl', ['$scope', '$http', function($scope, $http) {
 		description: "I ate too much"
 	};
 
+
+	//////////////////////////
+	// CRUD Methods for Event
 	$scope.getEvents = function() {
 		$scope.events = ListEvents.get()
 	}
@@ -16,18 +19,18 @@ cbtApp.controller('EventCtrl', ['$scope', '$http', function($scope, $http) {
 				$scope.allEvents = data
 			})
 	}
-	$scope.getEvent = function(existingCbtEvent) {
-		$http.get("/api/events/" + existingCbtEvent)
+	$scope.getEvent = function(eventId) {
+		$http.get("/api/events/" + eventId)
 			.success(function(data){
 				$scope.ourNewCbtEvent = data
 			})
 	}
 
-	$scope.createEvent = function(newCbtEvent) {
+	$scope.createEvent = function(cbEvent) {
 		$http.post(
 			"/api/events.json",
 			{
-				description: newCbtEvent.description
+				description: cbtEvent.description
 			}
 		)
 			.success(function(data, status, headers, config){
@@ -36,7 +39,17 @@ cbtApp.controller('EventCtrl', ['$scope', '$http', function($scope, $http) {
 			})
 			.error(function(data, status, headers, config) {
 				console.log("Failure...")
-				console.log(data)
 			})
+	}
+
+	$scope.destroyEvent = function(eventId) {
+		$http.delete(
+			"/api/events/" + eventId
+		)
+		.success(function(data, status, headers, config) {
+			console.log("Successfully deleted the event");
+			console.log(data.message)
+			$scope.listItem.remove()
+		})
 	}
 } ]);

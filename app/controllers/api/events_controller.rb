@@ -23,6 +23,12 @@ module  Api
   		respond_with @event
   	end
 
+    def destroy
+      event = Event.find(params[:id])
+      event.remove
+      respond_with data = {message: "Success! Destroyed!"}
+    end
+
 
 
 	end

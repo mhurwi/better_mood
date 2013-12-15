@@ -5,6 +5,7 @@
 	<ul ng-repeat="event in allMyEvents">
 		<li>
 			<a href="/events#/show/{{event.id}}">{{event.description}}</a>
+			<button delete-event data-id="{{event.id}}">x</button>
 		</li>
 	</ul>
 </div>

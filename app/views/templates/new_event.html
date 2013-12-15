@@ -1,8 +1,6 @@
 <div ng-controller="EventCreateCtrl">
 
-	<h1>New Event</h1>
-	
-	<h2>{{ getCurrentStep() }}</h2>
+	<h1>{{ getCurrentStateName() }}</h1>
 
 	<button ng-hide="firstStep()" ng-click="previousStep()">Previous</button>
 	<button ng-hide="lastStep()"ng-click="nextStep()">Next</button>
