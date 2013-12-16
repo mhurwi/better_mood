@@ -1,5 +1,25 @@
 <h3>Home</h3>
 <p><%= link_to "events_path", events_path %></p>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
+
+
+<%# User is logged in %>
+<% if current_user.present? %>
+	<p>current_user: <%= current_user.email %></p>
+	<h3>Your events</h3>
+	<ul>
+		<% current_user.events.each do |event| %>
+		<li><%= link_to event.description, "/events#/show/#{event.id.to_s}" %></li>
+		<% end %>
+	</ul>
+
+<%# Guest %>
+<% else %>
+	<p>Welcome, guest!</p>
+	<ul>
+		<% anonymous_events.each do |event| %>
+		<li><%= link_to event.description, "/events#/show/#{event.id.to_s}" %></li>
+		<% end %>
+	</ul>
 <% end %>
+
+

@@ -19,6 +19,7 @@ module  Api
 
   	def create
   		@event = Event.new
+      @event.update_attributes(user_id: current_user.id.to_s, anonymous: false) if current_user.present?
   		@event.save
   		respond_with @event
   	end
