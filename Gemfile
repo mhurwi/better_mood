@@ -14,6 +14,9 @@ gem 'mongoid', :github=>"mongoid/mongoid"
 gem 'rolify'
 gem 'simple_form'
 
+# for heroku: https://github.com/heroku/rails_12factor
+gem 'rails_12factor'
+
 gem 'rails_config'
 gem "active_model_serializers"
 
