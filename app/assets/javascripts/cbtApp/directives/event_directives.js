@@ -56,3 +56,10 @@ cbtApp.directive('createEvent', ['$http', '$state', function($http, $state){
 	}
 }])
 
+cbtApp.directive('next', ['$http', '$state', function($http, $state){
+	return function(scope, elem, attrs){
+		elem.bind("mouseup", function(){
+			scope.nextStep();
+		})
+	}
+}])
