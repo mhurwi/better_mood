@@ -5,7 +5,9 @@
     <title><%= content_for?(:title) ? yield(:title) : "Better Mood" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Better Mood" %>">
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js" %>
+    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js" %>
+    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.js" %>
+    https://"//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.js"
     <%= javascript_include_tag "application"%>
     <%= csrf_meta_tags %>
   </head>
