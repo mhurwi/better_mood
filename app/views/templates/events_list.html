@@ -1,4 +1,10 @@
 <h1>Events List</h1> 
+<% if current_user.present? %>
+<p>Welcome, you are logged in as: <%= current_user.email %>!</p>
+<% else %>
+<p>Welcome, Guest! You are not logged in and your events will be anonymous and public!</p>
+<% end %>
+
 <button create-event>New event</button>
 
 <div list-events>

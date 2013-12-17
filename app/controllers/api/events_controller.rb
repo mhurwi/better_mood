@@ -8,7 +8,11 @@ module  Api
   	end
 
     def index
-      @events = Event.where(user_id: current_user.id.to_s)
+      if current_user.present?
+        @events = Event.where(user_id: current_user.id.to_s)
+      else
+        @events = []
+      end
       respond_with @events
     end
 
@@ -18,6 +22,7 @@ module  Api
     end
 
     def show
+      @current_user = current_user
       @event = Event.find(params[:id])
       respond_with @event
     end

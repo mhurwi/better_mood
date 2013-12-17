@@ -1,6 +1,5 @@
 cbtApp.controller('EventCreateCtrl', ['$scope', '$http', '$stateParams', '$state', function($scope, $http, $stateParams, $state) {
 
-
 	///////////
 	// Feelings
 	$scope.addFeeling = function(cbtEvent){

@@ -5,5 +5,7 @@ module Api
     def safe_params
 		  params.require(:event).permit(:description, :feelings, :thoughts)
 		end
+
+
   end
 end
