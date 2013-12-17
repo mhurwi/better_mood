@@ -2,26 +2,18 @@ var cbtAppRoutes = angular.module('cbtAppRoutes', ['ui.router']);
 
 cbtAppRoutes.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
-	$urlRouterProvider.when("", "/");
-	$urlRouterProvider.when("/new", "/new/instructions");
-	// For any unmatched url, send to /route1
-	$urlRouterProvider.otherwise("/");
+	// $urlRouterProvider.when("", "/new");
+	// $urlRouterProvider.when("/new", "/new");
+	// // For any unmatched url, send to /route1
+	// $urlRouterProvider.otherwise("/new");
 
 	$stateProvider
-		.state('events', {
-			url: '/',
-			templateUrl: "/api/templates/events_list.html",
-		})
-		.state('show', {
-			url: '/show/:id',
-			templateUrl: "/api/templates/show_event.html",
-		})
 		.state('new', {
-			url: '/new/:id',
+			url: '/:id',
 			templateUrl: "/api/templates/new_event.html",
 			data: {
 				step: 0
-			},
+			}
 		})
 		.state('new.description', {
 			url: '/description/',

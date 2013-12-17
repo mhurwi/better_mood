@@ -1,8 +1,10 @@
+///////////////////////
+// Get data from server
 cbtApp.directive('listEvents', ['$http', function($http){
 	return function(scope, elem, attrs) {
 		$http.get("/api/events")
 			.success(function(data){
-				scope.allMyEvents = data
+				scope.myEvents = data
 			})
 		}
 	}])
@@ -18,7 +20,9 @@ cbtApp.directive('anonymousEvents', ['$http', function($http){
 
 
 
-cbtApp.directive('deleteEvent',['$http', '$state', function($http, $state){
+///////////////
+// CRUD actions
+cbtApp.directive('deleteEvent',['$http', '$state','$route', function($http, $state,$route){
 	return function(scope, elem, attrs) {
 		elem.bind ("mousedown", function () {
       $http.delete(
@@ -27,8 +31,9 @@ cbtApp.directive('deleteEvent',['$http', '$state', function($http, $state){
 			.success(function(data, status, headers, config) {
 				//ATTENTION: this is messing up the view
 				//the app becomes unresponsive and weird
+				scope.removeEventData()
+				console.log(status)
 				console.log("Successfully deleted the event");
-				console.log(data)
 			})
 			.error(function(data, status, headers, config) {
 				console.log("Error, could not do this.")
@@ -56,6 +61,9 @@ cbtApp.directive('createEvent', ['$http', '$state', function($http, $state){
 	}
 }])
 
+
+/////////////
+// Navigation
 cbtApp.directive('next', ['$http', '$state', function($http, $state){
 	return function(scope, elem, attrs){
 		elem.bind("mouseup", function(){
@@ -63,3 +71,17 @@ cbtApp.directive('next', ['$http', '$state', function($http, $state){
 		})
 	}
 }])
+
+
+
+// cbtApp.directive('go-to-events', ['$state', function($state){
+// 	return function(scope, elem, attrs){
+// 		elem.bind("mouseup", function(){
+// 			console.log("reloading page")
+// 			$state.transitionTo('events')
+// 			scope.listEvents()
+
+// 		})
+// 	}
+// }])
+

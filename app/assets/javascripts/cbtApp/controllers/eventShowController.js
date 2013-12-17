@@ -3,11 +3,15 @@ cbtApp.controller('EventShowCtrl', ['$scope', '$http', '$stateParams', function(
 		$http.get("/api/events/" + $stateParams["id"])
 			.success(function(data){
 				$scope.event_data = data
-				$scope.userCanDeleteEvent = data["current_user_is_owner"]
 				console.log(data)
 			})
 		}
 
 	loadData();
+
+	$scope.removeEventData = function() {
+		$scope.event_data = "null"
+	}
+
 	
 	}])

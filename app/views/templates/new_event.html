@@ -2,13 +2,28 @@
 
 	<h1>{{ getCurrentStateName() }}</h1>
 
-	<button ng-hide="firstStep()" ng-click="previousStep()">Previous</button>
-	<button ng-hide="lastStep()"ng-click="nextStep()">Next</button>
+
+
+
 
 	<!-- current cbtStep -->
 	<div ui-view></div>	
 
+	<!-- Show for first step -->
+	<div ng-show="getCurrentStateName() == 'new'">
+		<button ng-click="nextStep()">Let's start!</button>
+	</div>
 
+	<!-- show for wizard steps -->
+	<div ng-hide="getCurrentStateName() == 'new'">
+		<button ng-hide="getCurrentStateName() == 'new.review'" ng-click="updateEvent(cbtEvent)">UpdateEvent</button>
+		<button ng-hide="firstStep()" ng-click="previousStep()">Previous</button>
+		<button ng-hide="lastStep()"ng-click="nextStep()">Next</button>
+	</div>
+
+
+
+<hr>
 <p>debug event</p>
 <ul>
 	<li>id: {{ cbtEvent.id}}</li>

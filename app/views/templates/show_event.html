@@ -1,11 +1,12 @@
-
+<%# TODO: delete this file %>
 <div ng-controller="EventShowCtrl">
 	<a href="events#/">List all events</a>
 	<h1>Show event</h1>
 	<p><strong>What happened: </strong>{{ event_data.description }}</p>
 
-	<button ng-show="(event_data.current_user_id == event_data.user_id) && (event_data.current_user_id != 'null')" delete-event data-id="{{event_data.id}}">Delete this event</button>
-
+	<button ng-show="(event_data.current_user_id == event_data.user_id) && (event_data.current_user_id != 'null')" delete-event data-id="{{event_data.id}}">
+		Delete this event
+	</button>
 
 
 </div>

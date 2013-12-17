@@ -13,5 +13,9 @@ BetterMood::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users
 
-  resources :events
+  resources :events do
+    collection do
+      get "start_wizard" => 'events#start_wizard', as: "start_wizard"
+    end
+  end
 end

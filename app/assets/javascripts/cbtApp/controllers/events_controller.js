@@ -1,4 +1,4 @@
-cbtApp.controller('EventCtrl', ['CbtEvent', '$scope', '$http', '$stateParams', function(CbtEvent, $scope, $http, $stateParams) {
+cbtApp.controller('EventCtrl', ['CbtEvent','ListEvents', 'ListAnonymousEvents', '$scope', '$http', '$stateParams', '$state', function(CbtEvent, ListEvents, ListAnonymousEvents, $scope, $http, $stateParams, $state) {
 	
 	//////////////////////////
 	// CRUD Methods for Event
@@ -6,6 +6,20 @@ cbtApp.controller('EventCtrl', ['CbtEvent', '$scope', '$http', '$stateParams', f
 		CbtEvent.get({id: eventId}, function(data){
 			console.log(data)
 			$scope.cbtEvent = data
+		})
+	}
+
+	$scope.listEvents = function() {
+		ListEvents.query(function(data){
+			console.log('from listEvents()')
+			$scope.myEvents = data
+		})
+	}
+
+	$scope.listAnonymousEvents = function() {
+		ListAnonymousEvents.query(function(data){
+			console.log('from listAnonymousEvents()')
+			$scope.anonymousEvents = data
 		})
 	}
 
@@ -17,6 +31,9 @@ cbtApp.controller('EventCtrl', ['CbtEvent', '$scope', '$http', '$stateParams', f
 		})
 	}
 
+	$scope.$watch('myEvents', function(){
+		// $scope.listEvents();
+	})
 
 
 }]);

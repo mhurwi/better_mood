@@ -1,7 +1,7 @@
 var cbtAppServices = angular.module('cbtAppServices', ['ngCookies']);
 
 cbtAppServices.factory('ListEvents', ['$resource','$cookies',function($resource, $cookies) {
-  var resource = $resource("/api/events.json");
+  var resource = $resource("/api/events");
   return resource;
 }])
 cbtAppServices.factory('ListAnonymousEvents', ['$resource','$cookies',function($resource, $cookies) {

@@ -1,17 +1,40 @@
 class EventsController < ApplicationController
-  # before_filter :authenticate_user!
+  before_filter :authenticate_user!, only:[:show]
+
+  respond_to :html, :json
 
   def index
     # authorize! :index
-    @events = Event.all
+    if current_user.present?
+      @events = Event.where(user_id: current_user.id.to_s)
+    end
+
   end
 
   def show
     @event = Event.find(params[:id])
   end
 
-  def new
+  def start_wizard
     @event = Event.new
+      if current_user.present?
+        user_id = current_user.id.to_s
+        anonymous = false
+      else
+        user_id = "anonymous"
+        anonymous = true
+      end
+      @event.update_attributes(user_id: user_id, anonymous: false) if current_user.present?
+      @event.save
+      Analytics.track(
+        user_id: user_id, 
+        event: 'Created CBT Event', 
+        properties: { anonymous: true  })
+      redirect_to "/events/new#/#{@event.id.to_s}", event: @event
+  end
+
+  def new
+    
   end
   
   def update

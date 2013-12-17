@@ -1,3 +1,5 @@
+<%#  TODO: delete this file %>
+
 <h1>Events List</h1> 
 <% if current_user.present? %>
 <p>Welcome, you are logged in as: <%= current_user.email %>!</p>
@@ -6,9 +8,19 @@
 <% end %>
 
 <button create-event>New event</button>
+<button reload-page>RELOAD PAGE</button>
 
+<!-- <div ng-init="listEvents()">
+	<ul ng-repeat="event in myEvents">
+		<li>
+			<a href="/events#/show/{{event.id}}">{{event.description}}</a>
+		</li>
+	</ul>
+</div> -->
+
+<!-- using directives:
 <div list-events>
-	<ul ng-repeat="event in allMyEvents">
+	<ul ng-repeat="event in myEvents">
 		<li>
 			<a href="/events#/show/{{event.id}}">{{event.description}}</a>
 		</li>
@@ -16,10 +28,10 @@
 </div>
 
 <h1>Anonymous events from around the world</h1>
-<div anonymous-events>
+<div list-anonymous-events>
 	<ul ng-repeat="event in anonymousEvents">
 		<li>
 			<a href="/events#/show/{{event.id}}">{{event.description}}</a>
 		</li>
 	</ul>
-</div>
+</div>  -->

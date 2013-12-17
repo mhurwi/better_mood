@@ -1,5 +1,6 @@
 var cbtApp = angular.module('cbtApp',[
 		'ngResource',
+		'ngRoute',
 		'cbtAppRoutes', 
 		'cbtAppServices'
 	]);
