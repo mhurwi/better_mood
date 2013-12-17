@@ -15,11 +15,14 @@
 <%# Guest %>
 <% else %>
 	<p>Welcome, guest!</p>
-	<ul>
-		<% anonymous_events.each do |event| %>
-		<li><%= link_to event.description, "/events#/show/#{event.id.to_s}" %></li>
-		<% end %>
-	</ul>
 <% end %>
+
+
+<h3>Anonymous events from around the world</h3>
+<ul>
+	<% anonymous_events.each do |event| %>
+	<li><%= link_to event.description, "/events#/show/#{event.id.to_s}" %></li>
+	<% end %>
+</ul>
 
 
