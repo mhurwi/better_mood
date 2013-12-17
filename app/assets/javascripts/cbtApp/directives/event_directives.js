@@ -7,6 +7,15 @@ cbtApp.directive('listEvents', ['$http', function($http){
 		}
 	}])
 
+cbtApp.directive('anonymousEvents', ['$http', function($http){
+	return function(scope, elem, attrs) {
+		$http.get("/api/events/anonymous")
+			.success(function(data){
+				scope.anonymousEvents = data
+			})
+	}
+}])
+
 
 
 cbtApp.directive('deleteEvent',['$http', '$state', function($http, $state){

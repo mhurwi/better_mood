@@ -8,8 +8,13 @@ module  Api
   	end
 
     def index
-      @events = Event.all
+      @events = Event.where(user_id: current_user.id.to_s)
       respond_with @events
+    end
+
+    def anonymous
+      @anonymous_events = Event.where(anonymous: true)
+      respond_with @anonymous_events
     end
 
     def show
