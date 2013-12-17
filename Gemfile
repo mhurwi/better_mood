@@ -20,6 +20,8 @@ gem 'rails_12factor'
 gem 'rails_config'
 gem "active_model_serializers"
 
+gem 'analytics-ruby', '<1.0'
+
 gem "pry"
 gem "pry-rails"
 gem "pry-remote"

@@ -29,8 +29,19 @@ module  Api
 
   	def create
   		@event = Event.new
-      @event.update_attributes(user_id: current_user.id.to_s, anonymous: false) if current_user.present?
+      if current_user.present?
+        user_id = current_user.id.to_s
+        anonymous = false
+      else
+        user_id = "anonymous"
+        anonymous = true
+      end
+      @event.update_attributes(user_id: user_id, anonymous: false) if current_user.present?
   		@event.save
+      Analytics.track(
+        user_id: user_id, 
+        event: 'Created CBT Event', 
+        properties: { anonymous: true  })
   		respond_with @event
   	end
 
