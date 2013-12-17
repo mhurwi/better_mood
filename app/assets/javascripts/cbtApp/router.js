@@ -1,6 +1,6 @@
 var cbtAppRoutes = angular.module('cbtAppRoutes', ['ui.router']);
 
-cbtAppRoutes.config(function($stateProvider, $urlRouterProvider){
+cbtAppRoutes.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
 	$urlRouterProvider.when("", "/");
 	$urlRouterProvider.when("/new", "/new/instructions");
@@ -73,4 +73,4 @@ cbtAppRoutes.config(function($stateProvider, $urlRouterProvider){
 			}
 		})
 
-})
+}])
