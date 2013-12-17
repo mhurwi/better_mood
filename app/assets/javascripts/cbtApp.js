@@ -4,15 +4,15 @@ var cbtApp = angular.module('cbtApp',[
 		'cbtAppServices'
 	]);
 
-angular.module("cbtApp").run(function ($rootScope, $state, $stateParams) {
+angular.module("cbtApp").run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
-});
+}]);
 
-cbtApp.config(function($httpProvider){
+cbtApp.config(['$httpProvider', function($httpProvider){
 	authToken = $("meta[name=\"csrf-token\"]").attr("content")
 	$httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
-});
+}]);
 
 // # This is for Turbolinks compatibility, but it was fucking up
 // # $(document).on 'page:load', ->
