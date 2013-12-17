@@ -12,6 +12,10 @@ class EventSerializer < ActiveModel::Serializer
 	end
 
 	def current_user_id
-		current_user.id.to_s if current_user.present?
+		if current_user.present?
+			current_user.id.to_s 
+		else
+			"null"
+		end
 	end
 end
