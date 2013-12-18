@@ -1,37 +1,19 @@
 <div ng-controller="EventCreateCtrl">
 
-	<h1>{{ getCurrentStateName() }}</h1>
-
-
-
-
-
-	<!-- current cbtStep -->
+	<!-- current cbtStep view-->
 	<div ui-view></div>	
 
 	<!-- Show for first step -->
 	<div ng-show="getCurrentStateName() == 'new'">
-		<button ng-click="nextStep()">Let's start!</button>
+		<p>Let's review an event in your life.  This app guides you through the CBT process.</p>
+		<button class="btn btn-default" ng-click="nextStep()">Let's start!</button>
 	</div>
 
 	<!-- show for wizard steps -->
 	<div ng-hide="getCurrentStateName() == 'new'">
-		<button ng-hide="firstStep()" ng-click="previousStep()">Previous</button>
-		<button ng-hide="lastStep()"ng-click="updateEvent(cbtEvent); nextStep()">Save & Continue</button>
+		<button class="btn btn-default" ng-hide="firstStep()" ng-click="previousStep()">Previous</button>
+		<button class="btn btn-default" ng-hide="lastStep()"ng-click="updateEvent(cbtEvent); nextStep()">Save & Continue</button>
 	</div>
 
-
-
-<hr>
-<p>debug event</p>
-<ul>
-	<li>id: {{ cbtEvent.id}}</li>
-	<li>feelings: {{ cbtEvent.feelings }}</li>
-	<li>thoughts: {{ cbtEvent.thoughts }}</li>
-	<li>description: {{ cbtEvent.description }}</li>
-</ul>
-
-
-	
 
 </div>

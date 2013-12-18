@@ -12,4 +12,8 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def title(page_title)
+    provide :title, page_title.to_s
+  end
+
 end

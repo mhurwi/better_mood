@@ -1,20 +1,23 @@
-<h3>Home</h3>
+<% title "Home" %>
 
-<%# User is logged in %>
-<% if current_user.present? %>
-	<p><%= link_to "Your events", events_path %></p>
+<!-- <h3>Home</h3> -->
+<div class="col-md-12">
+	<%# User is logged in %>
+	<% if current_user.present? %>
+		<p class="lead"><%= link_to "Go to your events", events_path %></p>
+	<%# Guest %>
+	<% else %>
+		<p class="lead">Welcome, guest!</p>
+	<% end %>
+</div>
 
-<%# Guest %>
-<% else %>
-	<p>Welcome, guest!</p>
-<% end %>
-
-
-<h3>Anonymous events from around the world</h3>
+<h3>Events from around the world</h3>
 <ul>
 	<% anonymous_events.each do |event| %>
 	<li><%= link_to event.description, "/events#/show/#{event.id.to_s}" %></li>
 	<% end %>
 </ul>
+
+
 
 

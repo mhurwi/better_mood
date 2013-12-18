@@ -1,0 +1,32 @@
+<% title "Dashboard" %>
+
+<%# User is logged in %>
+<% if current_user.present? %>
+<div class="col-md-12">
+<p class="lead">This simple sidebar template has a hint of JavaScript to make the template responsive. It also includes Font Awesome icon fonts.</p>
+</div>
+<div class="col-md-6">
+<p class="well">The template still uses the default Bootstrap rows and columns.</p>
+</div>
+<div class="col-md-6">
+<p class="well">But the full-width layout means that you wont be using containers.</p>
+</div>
+<div class="col-md-4">
+<p class="well">Three Column Example</p>
+</div>
+<div class="col-md-4">
+<p class="well">Three Column Example</p>
+</div>
+<div class="col-md-4">
+<p class="well">You get the idea! Do whatever you want in the page content area!</p>
+</div>
+<p><%= link_to "Your events", events_path %></p>
+
+<% else %>
+<div class="col-md-12">
+	<p class="lead">Welcome guest!  CBT is free to use!</p>
+	<p>Unregistered users cannot save events.</p>
+	<p>If you want to save events, you need to <%= link_to "sign in", "/users/sign_in" %></p>
+</div>
+
+<% end %>

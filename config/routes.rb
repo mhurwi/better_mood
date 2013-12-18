@@ -1,5 +1,6 @@
 BetterMood::Application.routes.draw do
   root :to => "home#index"
+  get '/dashboard' => "home#dashboard", as: "dashboard"
 
   namespace :api, defaults: {format: :json} do
   	resources :events, only: [:index, :show, :create, :update, :destroy] do

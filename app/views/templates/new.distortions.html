@@ -1,30 +1,22 @@
 <div>
 
-<table>
-		<thead>
-			<tr>
-				<td>Thought</td>
-				<td>Distortions</td>
-				<td></td>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="thought in cbtEvent.thoughts">
-				<td><p>{{thought.automaticThought}}</p></td>
-				<td>
-					<ul>
-						<li ng-repeat="distortion in thought.distortions">
-							<input type="text" ng-model="distortion.name">
-							<button ng-click="removeDistortion(thought, $index)">X</button>
-						</li>
-					</ul>
-				</td>
-				<td>
-					<button ng-click="addDistortion(thought)">add</button>
-				</td>
-			</tr>
+<h2>Distortions</h2>
+<p>Your automatic thoughts likely demonstrate some logical distortions.</p>
+<p>For each thought add any distortions you see.</p>
+			<ul ng-repeat="thought in cbtEvent.thoughts">
+				<li><p>{{thought.automaticThought}}</p>
+						<p><button type="button" class="btn btn-xs" ng-click="addDistortion(thought)">add distortion</button></p>
+						<ul class="list-unstyled">
+							<li ng-repeat="distortion in thought.distortions">
+								<div class="form-group">
+									<input class="form-control col-md-6" type="text" ng-model="distortion.name">
+									<button type="button" class="btn btn-xs" ng-click="removeDistortion(thought, $index)">X</button>	
+								</div>
+							</li>
+						</ul>
+				</li>
+			</ul>
 		</tbody>
-
 	</table>
 
 

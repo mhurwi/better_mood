@@ -8,6 +8,15 @@
     <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js" %>
     <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.js" %>
     <%= javascript_include_tag "application"%>
+
+        <!-- from http://startbootstrap.com/templates/simple-sidebar.html# -->
+        <!-- Bootstrap core CSS -->
+        <!-- <link href="css/bootstrap.css" rel="stylesheet"> -->
+
+        <!-- Add custom CSS here -->
+        <!-- <link href="css/simple-sidebar.css" rel="stylesheet"> -->
+        <!-- <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"> -->
+
     <%= csrf_meta_tags %>
 
     <%# Segment.io tracking code %>
@@ -18,15 +27,54 @@
     </script>
   </head>
   <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
 
+    <div id="wrapper">      
+      <!-- Sidebar -->
+      <%= render 'layouts/sidebar' %>
+          
+      <!-- Page content -->
+      <div id="page-content-wrapper">
+        <header>
+          <%= render 'layouts/navigation' %>
+        </header>
+        
+        <div class="content-header">
+          <h1>
+            <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
+            
+            <%= yield(:title) %>
+          </h1>
+        </div>
+
+
+        <!-- Keep all page content within the page-content inset div! -->
+        <div class="page-content inset">
+          <div class="row">
+            <div class="col-md-12">
+              <!-- Main App Content -->
+              <main role="main">
+                 <%= render 'layouts/messages' %>
+                 <%= yield %>
+              </main>
+
+          </div>
+        </div>
+      </div>
+      
+    </div>
+        
+
+
+    <!-- Custom JavaScript for the Menu Toggle -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("active");
+    });
+    </script>
     
+
+  <!-- Segment.io Identify User-->  
   <% if current_user %>
     <script type="text/javascript">
       // this info is parsed by Segment.io and sent off to the appropriate analytics providers
@@ -41,5 +89,29 @@
   <% end %>
     
     
+        <!-- JavaScript -->
+        <script src="js/jquery-1.10.2.js"></script>
+  </body>
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Starter Template for Bootstrap</title>
+ -->
+
+<!--   </head>
+
+  <body>
+   -->
+
   </body>
 </html>

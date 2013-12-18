@@ -1,21 +1,26 @@
 <div>
-	<table>
+	<table class="table">
 		<thead>
 			<tr>
-				<td>Thought</td>
+				<td>
+					<h3>Automatic Thoughts</h3>
+					<p>List the thoughts that popped into your head just as this event occurred.</p>
+				</td>
 				<td></td>
 			</tr>
 		</thead>
 		<tbody>
 			<tr ng-repeat="thought in cbtEvent.thoughts">
-				<td><input type="text" ng-model="thought.automaticThought"></td>
-				<td><button ng-click="removethought(cbtEvent, $index)">X</button></td>
+				<td><input class="form-control" type="text" ng-model="thought.automaticThought"></td>
+				<td><button type="button" class="form-control btn btn-xs" ng-click="removethought(cbtEvent, $index)">X</button></td>
 			</tr>
 		</tbody>
 
 	</table>
 
-	<button ng-click="addThought(cbtEvent)">Add another thought</button>
+	<div class="form-group"> 
+		<button class="form-control btn btn-default" ng-click="addThought(cbtEvent)">Add another thought</button>
+	</div>
 
 	<br>
 
