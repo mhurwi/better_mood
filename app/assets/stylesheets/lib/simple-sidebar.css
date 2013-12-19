@@ -1,3 +1,8 @@
+/*996699 purple
+CCCCCC grey
+000000 black
+006699 blue*/
+
 #wrapper {
   padding-left: 250px;
   transition: all 0.4s ease 0s;
@@ -66,6 +71,17 @@
 .sidebar-nav > .sidebar-brand a:hover {
   color: #fff;
   background: none;
+}
+
+.sidebar-nav > li > .well {
+  background-color: #000;
+  border: 0;
+  color: rgba(0, 102, 153, 0.8);
+  font-style: italic;
+}
+
+.sidebar-nav > .user-auth {
+  padding-top: 100px;
 }
 
 .content-header {

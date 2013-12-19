@@ -2,9 +2,11 @@
   <ul class="sidebar-nav">
     <li class="sidebar-brand"><a href="/" class="<%= current_page?(root_path) ? "active" : ""%>">BetterMood.me</a></li>
     <%# add navigation links to this file %>
-      <li><%= link_to('Dashboard', dashboard_path, :class => current_page?(dashboard_path) ? "active" : "") %></li>
-      <li><%= link_to('Events', events_path, :class => current_page?(events_path) ? "active" : "") %></li>
+    <li><%= link_to('Dashboard', dashboard_path, :class => current_page?(dashboard_path) ? "active" : "") %></li>
+    <li><%= link_to('Events', events_path, :class => current_page?(events_path) ? "active" : "") %></li>
 
+
+    <div class="user-auth">
     <% if user_signed_in? %>
       <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
     <% else %>
@@ -20,5 +22,8 @@
         <li><%= link_to 'Admin', users_path %></li>
       <% end %>
     <% end %>
+    </div>
+
+
   </ul>
 </div>

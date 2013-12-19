@@ -1,6 +1,6 @@
 <div>
 
-<table>
+<table class="table">
 		<thead>
 			<tr>
 				<td>Thought</td>
@@ -12,7 +12,7 @@
 			<tr ng-repeat="thought in cbtEvent.thoughts">
 				<td><p>{{thought.automaticThought}}</p></td>
 				<td>
-					<input type="text" ng-model="thought.rationalThought">
+					<input class="form-control" type="text" ng-model="thought.rationalThought">
 				</td>
 			</tr>
 		</tbody>

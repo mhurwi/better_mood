@@ -37,6 +37,10 @@ class User
   # field :unlock_token,    :type => String # Only if unlock strategy is :email or :both
   # field :locked_at,       :type => Time
 
+  def self.by_email(email)
+    where(email: email).first
+  end
+
   def events
     Event.where(user_id: self.id.to_s)
   end

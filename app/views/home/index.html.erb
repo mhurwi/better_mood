@@ -4,26 +4,38 @@
 <div class="col-md-12">
 	<%# User is logged in %>
 	<% if current_user.present? %>
-		<p class="lead"><%= link_to "Go to your events", events_path %></p>
+		<p class="lead">Welcome! You are logged in as <%= current_user.email %></p>
+		<p><%= link_to "Go to your dashboard", dashboard_path %></p>
 	<%# Guest %>
 	<% else %>
 		<p class="lead">Welcome, guest!</p>
 	<% end %>
-</div>
 
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">Events from around the world</h3>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Use BetterMood.me to practice getting in a better mood.</h3>
+		</div>
+		<div class="panel-body">
+			<p>Something happened.  You are feeling upset.  Bummed, angry, embarassed, or something else yucky.</p>
+			<p>BetterMood.me is here to help.  Use the Cognitive Behavioral Therapy app to process what happened.  You will describe the event, reflect on your thinking, reduce the unpleasant feeling, and get in a better mood.</p>
+			<p><%= link_to "Give it a shot! It takes 5 minutes and it's totally free.", start_wizard_events_path %></p>
+			<p></p>
+		</div>
 	</div>
-	<div class="panel-body">
-		<ul class="list-unstyled">
-			<% anonymous_events.each do |event| %>
-			<li><%= link_to event.description, "/events#/show/#{event.id.to_s}" %></li>
-			<% end %>
-		</ul>
+
+
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Some events from around the world</h3>
+		</div>
+		<div class="panel-body">
+			<ul class="list-unstyled">
+				<% anonymous_events.each do |event| %>
+				<li><%= link_to event.description, "/events#/show/#{event.id.to_s}" %></li>
+				<% end %>
+			</ul>
+		</div>
 	</div>
+
 </div>
-
-
-
-

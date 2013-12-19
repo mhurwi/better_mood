@@ -2,31 +2,70 @@
 
 <%# User is logged in %>
 <% if current_user.present? %>
+
 <div class="col-md-12">
-<p class="lead">This simple sidebar template has a hint of JavaScript to make the template responsive. It also includes Font Awesome icon fonts.</p>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<p class="panel-title">Welcome! You are logged in as: <%= current_user.email %></p>
+		</div>
+		<div class="panel-body">
+			<p>Analytic tools coming soon.</p>
+			<p>Would you like to <%= link_to "practice CBT?", events_path %></p>
+		</div>
+	</div>
 </div>
-<div class="col-md-6">
-<p class="well">The template still uses the default Bootstrap rows and columns.</p>
+
+<div class="col-md-3">
+	<div class="panel panel-default">
+	<table class="table">	
+	<thead>
+		<tr>
+			<td>Events you have processed with BetterMood.me</td>
+		</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td><strong><%= current_user_event_count %></strong></td>
+	</tr>
+	</tbody>
+	</table>
+	</div>
 </div>
-<div class="col-md-6">
-<p class="well">But the full-width layout means that you wont be using containers.</p>
+
+<div class="col-md-3">
+	<div class="panel panel-default">
+	<table class="table">	
+	<thead>
+		<tr>
+			<td>Your most recent event</td>
+		</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td><strong><%= link_to current_user_most_recent_event.description, event_path(current_user_most_recent_event) %></strong></td>
+	</tr>
+	<tr>
+		<td><%= current_user_most_recent_event.created_at.strftime("%B %e, %Y") %></td>
+	</tr>
+	</tbody>
+	</table>
+	</div>
 </div>
-<div class="col-md-4">
-<p class="well">Three Column Example</p>
-</div>
-<div class="col-md-4">
-<p class="well">Three Column Example</p>
-</div>
-<div class="col-md-4">
-<p class="well">You get the idea! Do whatever you want in the page content area!</p>
-</div>
-<p><%= link_to "Your events", events_path %></p>
+
 
 <% else %>
 <div class="col-md-12">
-	<p class="lead">Welcome guest!  CBT is free to use!</p>
-	<p>Unregistered users cannot save events.</p>
-	<p>If you want to save events, you need to <%= link_to "sign in", "/users/sign_in" %></p>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<p class="panel-title">Welcome guest!  CBT is free to use, but only registered users get the dashboard!</p>
+		</div>
+		<div class="panel-body">
+			<p>Why not register? You get to save events, see progress on your dashboard, and get other features as they are added.</p>
+			<p>It's totally free.</p>
+			<p><%= link_to "Register now", "/users/sign_up", :class => "btn btn-large btn-success" %></p>
+			<p class="muted">Already have an account? <%= link_to "Sign in", "/users/sign_in" %></p>
+		</div>
+	</div>
 </div>
 
 <% end %>

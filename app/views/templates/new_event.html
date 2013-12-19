@@ -1,8 +1,10 @@
 <div ng-controller="EventCreateCtrl">
 
-	<!-- current cbtStep view-->
-	<div ui-view></div>	
 
+	<!-- current cbtStep view-->
+		<div ui-view></div>		
+	
+	<hr>
 	<!-- Show for first step -->
 	<div ng-show="getCurrentStateName() == 'new'">
 		<p>Let's review an event in your life.  This app guides you through the CBT process.</p>
@@ -11,7 +13,7 @@
 
 	<!-- show for wizard steps -->
 	<div ng-hide="getCurrentStateName() == 'new'">
-		<button class="btn btn-default" ng-hide="firstStep()" ng-click="previousStep()">Previous</button>
+		<button class="btn btn-default" ng-hide="firstStep();lastStep()" ng-click="previousStep()">Previous</button>
 		<button class="btn btn-default" ng-hide="lastStep()"ng-click="updateEvent(cbtEvent); nextStep()">Save & Continue</button>
 	</div>
 	
