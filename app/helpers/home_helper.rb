@@ -9,6 +9,6 @@ module HomeHelper
 	end
 
 	def current_user_most_recent_event
-		current_user.events.asc(:created_at).first
+		current_user.events.desc(:created_at).first
 	end
 end

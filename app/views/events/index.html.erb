@@ -1,5 +1,6 @@
 <% title "Events" %>
 
+<% if current_user.present? %>
 <div class="row">
 	<div class="col-md-12">
 
@@ -28,7 +29,7 @@
 	<div class="col-md-12">
 		<div class="panel panel-default">
 		<div class="panel-body">
-			<p>As a guest, you can only see anonymous events that people choose to make public:</p>
+			<p>Anonymous events:</p>
 			<ul>
 			<% @events.each do |e| %>
 				<li><%= link_to e.description, event_path(e) %></li>
@@ -40,4 +41,22 @@
 </div>
 
 
+<% else %>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+		<div class="panel-body">
+			<p>As a guest, you can only see anonymous events:</p>
+			<ul>
+			<% @events.each do |e| %>
+				<li><%= link_to e.description, event_path(e) %></li>
+				<% end %>
+			</ul>
+		</div>
+		</div>
+	</div>	
+</div>
+
+<% end %>
 

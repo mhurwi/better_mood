@@ -6,8 +6,8 @@ module EventsHelper
 			total_feeling_after = 0
 			number_of_feelings = event.feelings.count
 			event.feelings.each do |feeling|
-				total_feeling_before += feeling["amountBefore"]
-				total_feeling_after += feeling["amountAfter"]
+				total_feeling_before += feeling["amountBefore"].to_i
+				total_feeling_after += feeling["amountAfter"].to_i
 			end	
 			return (total_feeling_before / number_of_feelings)  -  (total_feeling_after / number_of_feelings)
 		end

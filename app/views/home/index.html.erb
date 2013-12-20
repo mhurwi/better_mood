@@ -25,15 +25,17 @@
 
 
 
+	
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3 class="panel-title">Some events from around the world</h3>
 		</div>
 		<div class="panel-body">
-			<p>BetterMood.me is private by default.  But if you want to share your experiences anonymously, you can do that!</p>
+			<p>Here are some anonymous events from other guests.</p>
+			<p>If you register, you can save events privately.  <%= link_to "Register now", "/users/sign_up" %></p>
 			<ul class="list-unstyled">
 				<% anonymous_events.each do |event| %>
-				<li><%= link_to event.description, "/events#/show/#{event.id.to_s}" %></li>
+				<li><%= link_to event.description, "/events/#{event.id.to_s}" %></li>
 				<% end %>
 			</ul>
 		</div>
