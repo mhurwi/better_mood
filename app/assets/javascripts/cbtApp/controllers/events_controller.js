@@ -26,6 +26,7 @@ cbtApp.controller('EventCtrl', ['CbtEvent','ListEvents', 'ListAnonymousEvents', 
 	$scope.updateEvent = function(cbtEvent) {
 		CbtEvent.update({id: cbtEvent.id}, {event: cbtEvent }, function(data){
 			$scope.cbtEvent = data.event;
+			console.log(data.event)
 		}, function(error){
 			return false
 		})

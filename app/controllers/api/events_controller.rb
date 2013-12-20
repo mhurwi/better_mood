@@ -48,8 +48,8 @@ module  Api
     def update
       @event = Event.find(params[:id])
       @event.update_attributes(description: params["event"]["description"])
-      @event.update_attributes(feelings: params["event"]["feelings"]) unless params["event"]["feelings"].nil?
-      @event.update_attributes(thoughts: params["event"]["thoughts"]) unless params["event"]["thoughts"].nil?
+      @event.update_attributes(feelings: params["event"]["feelings"])
+      @event.update_attributes(thoughts: params["event"]["thoughts"])
       respond_with @event
     end
 
