@@ -1,0 +1,44 @@
+<% title "Anonymous event" if @event.anonymous %>
+<% title "Your event as an email" if current_user && @event.user_id == current_user.id.to_s %>
+
+
+<h3>TOTAL ALPHA NOT READY</h3>
+<p>But what a good idea.  Recast teh event as a ready-to-send email that lays things out, 
+maybe with options to only give the rational thoughts, or also to include feelings and original thoughts.</p>
+
+
+<div class="row">
+	<h2>Dear so and so,</h2>
+	<p class="lead">Here's what happened: <%= @event.description %></p>
+</div>
+
+<div class="row">
+<p>At first I felt
+<% @event.feelings.each do |f| %>
+	<% if f != @event.feelings.last %>
+		<%= f['name'].downcase %>, 	
+	<% else %>
+		and <%= f['name'].downcase %>.
+	<% end %>
+<% end %>
+</p>
+<%# @event.feelings.each {|f| "#{f['name']} ," unless(f == @event.feelings.last) } %>
+<%# @event.feelings.each {|f| "and #{f['name']}." if(f == @event.feelings.last) }%>
+</p>
+</div>
+
+<div class="row">
+	<p>At first, I thought: 
+	<% @event.thoughts.each do |thought| %>
+		<%= thought["automaticThought"] %>.</p>
+		<p>But then I saw some problems with my logic: <% thought["distortions"].each do |d| %>
+			<%= d["name"] %>
+		<% end %>
+
+		<p>Now, I think that: <%= thought["rationalThought"] %></p>
+	<% end %>
+</div>
+
+<div class="row">
+		<p>I feel better now. Thanks for listening!</</p>
+</div>

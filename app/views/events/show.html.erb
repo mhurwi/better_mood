@@ -1,4 +1,49 @@
-<%= link_to "Back to all events", events_path %>
-<h1>Event Show</h1>
+<% title "Anonymous event" if @event.anonymous %>
+<% title "Your event" if current_user && @event.user_id == current_user.id.to_s %>
 
-<%= @event.description %>
+
+<div class="row">
+	<h2>I am someone who experienced the following:</h2>
+	<p class="lead"><strong>Description:</strong> <%= @event.description %></p>
+	<p class="text-muted"><%= @event.created_at.strftime("%B %d, %Y") %></p>
+</div>
+
+<div class="row">
+	<p>Feelings I had</p>
+	<% @event.feelings.each do |feeling| %>
+		<div class="panel panel-default col-md-3">
+			<ul class="list-unstyled">
+				<li><%= feeling["name"] %></li>
+				<li><%= feeling["amountBefore"] %></li>
+				<li><%= feeling["amountAfter"] %></li>
+			</ul>
+		</div>
+	<% end %>
+</div>
+
+<div class="row">
+	<% @event.thoughts.each do |thought| %>
+	<div class="panel panel-default col-md-3">
+		<p>At first I thought: <%= thought["automaticThought"] %></p>
+		<p>Distortions I spotted:</p>
+		<ul>
+		<% thought["distortions"].each do |d| %>
+			<li><%= d["name"] %></li>
+		<% end %>
+		</ul>
+		<p>Rational version:</p> 
+		<p><%= thought["rationalThought"] %></p>
+	</div>
+	<% end %>
+</div>
+
+<div class="row">
+	<div class="panel panel-default col-md-6">
+			<div class="panel-body">
+				<p>Feel better? Yep! Average intensity of feelings reduced by <strong><%= average_feeling_reduction(@event) %></strong></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<p><%= link_to "Email version", email_version_event_path(@event) %></p>

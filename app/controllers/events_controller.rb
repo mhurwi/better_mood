@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :authenticate_user!, only:[:show]
+  # before_filter :authenticate_user!, only:[:show]
 
   respond_to :html, :json
 
@@ -7,12 +7,28 @@ class EventsController < ApplicationController
     # authorize! :index
     if current_user.present?
       @events = Event.where(user_id: current_user.id.to_s)
+    else
+      @events = Event.where(anonymous: true)
     end
 
   end
 
   def show
     @event = Event.find(params[:id])
+    if((current_user.present? && current_user.id.to_s == @event.user_id) || (@event.anonymous?))
+      respond_with @event
+    else
+      redirect_to :index, notice: "You are not authorized to view that event."
+    end
+  end
+
+  def email_version
+    @event = Event.find(params[:id])
+    if((current_user.present? && current_user.id.to_s == @event.user_id) || (@event.anonymous?))
+      respond_with @event
+    else
+      redirect_to :index, notice: "You are not authorized to view that event."
+    end
   end
 
   def start_wizard

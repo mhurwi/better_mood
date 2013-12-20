@@ -1,4 +1,4 @@
-<% title "Home" %>
+<% title "BetterMood.me" %>
 
 <!-- <h3>Home</h3> -->
 <div class="col-md-12">
@@ -18,7 +18,7 @@
 		<div class="panel-body">
 			<p>Something happened.  You are feeling upset.  Bummed, angry, embarassed, or something else yucky.</p>
 			<p>BetterMood.me is here to help.  Use the Cognitive Behavioral Therapy app to process what happened.  You will describe the event, reflect on your thinking, reduce the unpleasant feeling, and get in a better mood.</p>
-			<p><%= link_to "Give it a shot! It takes 5 minutes and it's totally free.", start_wizard_events_path %></p>
+			<p><%= link_to "Give it a shot! It takes 5 minutes and it's totally free.", start_wizard_events_path, class: "btn btn-success" %></p>
 			<p></p>
 		</div>
 	</div>
@@ -30,6 +30,7 @@
 			<h3 class="panel-title">Some events from around the world</h3>
 		</div>
 		<div class="panel-body">
+			<p>BetterMood.me is private by default.  But if you want to share your experiences anonymously, you can do that!</p>
 			<ul class="list-unstyled">
 				<% anonymous_events.each do |event| %>
 				<li><%= link_to event.description, "/events#/show/#{event.id.to_s}" %></li>

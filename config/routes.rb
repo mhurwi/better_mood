@@ -18,5 +18,8 @@ BetterMood::Application.routes.draw do
     collection do
       get "start_wizard" => 'events#start_wizard', as: "start_wizard"
     end
+    member do
+      get "email_version" => 'events#email_version', as: "email_version"
+    end
   end
 end

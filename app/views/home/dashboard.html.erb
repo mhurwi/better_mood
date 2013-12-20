@@ -32,6 +32,7 @@
 	</div>
 </div>
 
+<% if current_user_most_recent_event.present? %>
 <div class="col-md-3">
 	<div class="panel panel-default">
 	<table class="table">	
@@ -51,17 +52,19 @@
 	</table>
 	</div>
 </div>
+<% end %>
 
 
 <% else %>
 <div class="col-md-12">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<p class="panel-title">Welcome guest!  CBT is free to use, but only registered users get the dashboard!</p>
+			<p class="panel-title">BetterMood.me is free to use, but only registered users get the dashboard!</p>
 		</div>
 		<div class="panel-body">
-			<p>Why not register? You get to save events, see progress on your dashboard, and get other features as they are added.</p>
-			<p>It's totally free.</p>
+			<p>The dashboard is a place to view past events, observe trends, and use new features as they come.</p>
+			<p>You'll get to save events and use other features as they are added.</p>
+			<p>And it's totally free.</p>
 			<p><%= link_to "Register now", "/users/sign_up", :class => "btn btn-large btn-success" %></p>
 			<p class="muted">Already have an account? <%= link_to "Sign in", "/users/sign_in" %></p>
 		</div>
