@@ -12,7 +12,7 @@ cbtApp.controller('EventCreateCtrl', ['$scope', '$http', '$stateParams', '$state
 	///////////
 	// Thoughts
 	$scope.addThought = function(cbtEvent){
-		cbtEvent.thoughts.push({"automaticThought":"", "distortions":[{"name":""}], "rationalThought":""})
+		cbtEvent.thoughts.push({"automaticThought":"", "distortions":[], "rationalThought":""})
 	}
 	$scope.removeThought = function(cbtEvent, index){
 		cbtEvent.thoughts.splice(index, 1)
@@ -20,8 +20,11 @@ cbtApp.controller('EventCreateCtrl', ['$scope', '$http', '$stateParams', '$state
 
 	///////////
 	// Distortions
-	$scope.addDistortion = function(thought){
-		thought.distortions.push({"name":""})
+	$scope.addDistortion = function(thought, choice){
+		if(thought.distortions == null){
+			thought.distortions = []
+		}
+		thought.distortions.push({"name":choice})
 	}
 	$scope.removeDistortion = function(thought, index){
 		thought.distortions.splice(index, 1)
