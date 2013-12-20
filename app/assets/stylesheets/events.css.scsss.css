@@ -1,0 +1,4 @@
+.intensity-buttons > .btn:hover {
+	background-color: grey;
+	border-color: grey;
+}

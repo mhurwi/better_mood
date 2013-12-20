@@ -1,27 +1,61 @@
-<div>
-	<table class="table">
-		<thead>
-			<tr>
-				<td>Feeling</td>
-				<td>How strongly you are feeling it</td>
-				<td></td>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="feeling in cbtEvent.feelings">
-				<td><input class="form-control" type="text" ng-model="feeling.name"></td>
-				<td><input class="form-control" type="number" ng-model="feeling.amountBefore"></td>
-				<td><button class="form-control btn btn-xs" ng-click="removeFeeling(cbtEvent, $index)">X</button></td>
-			</tr>
-		</tbody>
+<div class="row" ng-repeat="feeling in cbtEvent.feelings">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="form-group">
+				<label>What would you call this feeling?</label>
+				<input class="form-control" type="text" ng-model="feeling.name">
+			</div>
+			
+			<div class="form-group">
+				<label>How intensely are you feeling it?  
+					<span feeling-intensity-indicator data-intensity="{{feeling.amountBefore}}"class="feeling-intensity">{{ feeling.amountBefore }}</span>
+				</label>
+				<div class="radio">
+			    <div class="btn-toolbar" role="toolbar">
+						<div class="btn-group intensity-buttons">
+  						<button feeling-intensity-button type="button" class="btn intensity-btn-1 btn-success" id="intensity1" value="1" ng-model="feeling.amountBefore">
+  							1
+  						</button>
+  						<button feeling-intensity-button type="button" class="btn intensity-btn-2 btn-success" id="intensity2" value="2" ng-model="feeling.amountBefore">
+  							2
+  						</button>
+  						<button feeling-intensity-button type="button" class="btn intensity-btn-3 btn-info" id="intensity3" value="3" ng-model="feeling.amountBefore">
+  							3
+  						</button>
+  						<button feeling-intensity-button type="button" class="btn intensity-btn-4 btn-info" id="intensity4" value="4" ng-model="feeling.amountBefore">
+  							4
+  						</button>
+  						<button feeling-intensity-button type="button" class="btn intensity-btn-5 btn-primary" id="intensity5" value="5" ng-model="feeling.amountBefore">
+  							5
+  						</button>
+  						<button feeling-intensity-button type="button" class="btn intensity-btn-6 btn-primary" id="intensity6" value="6" ng-model="feeling.amountBefore">
+  							6
+  						</button>
+  						<button feeling-intensity-button type="button" class="btn intensity-btn-7 btn-warning" id="intensity7" value="7" ng-model="feeling.amountBefore">
+  							7
+  						</button>
+  						<button feeling-intensity-button type="button" class="btn intensity-btn-8 btn-warning" id="intensity8" value="8" ng-model="feeling.amountBefore">
+  							8
+  						</button>
+  						<button feeling-intensity-button type="button" class="btn intensity-btn-9 btn-danger" id="intensity9" value="9" ng-model="feeling.amountBefore">
+  							9
+  						</button>
+  						<button feeling-intensity-button type="button" class="btn intensity-btn-10 btn-danger" id="intensity10" value="10" ng-model="feeling.amountBefore">
+  							10
+  						</button>
+						</div>
+					</div>
+				</div>
+			
 
-	</table>
+			</div>
+			<p><button class="btn btn-xs" ng-click="removeFeeling(cbtEvent, $index)">Delete this feeling</button></p>
+		</div>
+	</div>
+</div>
+
+
 
 	<div class="form-group">
 		<button type="button" class="btn btn-default" ng-click="addFeeling(cbtEvent)">Add another feeling</button>	
 	</div>
-	
-
-	<br>
-
-</div>
