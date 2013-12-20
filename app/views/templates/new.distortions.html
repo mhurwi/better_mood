@@ -4,27 +4,29 @@
 <p>Your automatic thoughts likely demonstrate some logical distortions.</p>
 <p>For each thought add any distortions you see.</p>
 			
-			<div class="panel panel-default" ng-repeat="thought in cbtEvent.thoughts">
-				<div class="panel-body">
-				<li><p>{{thought.automaticThought}}</p>
-						<ul class="list-unstyled">
-							<li ng-repeat="distortion in thought.distortions">
-									<p>{{ distortion.name }} <button type="button" class="btn btn-xs" ng-click="removeDistortion(thought, $index)">X</button></p>
-									
-									<li class="dropdown" ng-controller="DistortionsCtrl">
-								  <a class="dropdown-toggle">
-								    Add a distortion
-								  </a>
-								  <ul class="dropdown-menu">
-								    <li ng-repeat="choice in items">
-								      <a ng-click="addDistortion(thought, choice)">{{choice}}</a>
-								    </li>
-								  </ul>
+			<div class="row" ng-repeat="thought in cbtEvent.thoughts">
+				<div class="panel panel-default col-md-4">
+					<div class="panel-body">
+					<li><p>{{thought.automaticThought}}</p>
+							<ul class="list-unstyled">
+								<li ng-repeat="distortion in thought.distortions">
+										<p>{{ distortion.name }} <button type="button" class="btn btn-xs" ng-click="removeDistortion(thought, $index)">X</button></p>
+										
+										<li class="dropdown" ng-controller="DistortionsCtrl">
+									  <a class="dropdown-toggle">
+									    Add a distortion
+									  </a>
+									  <ul class="dropdown-menu">
+									    <li ng-repeat="choice in items">
+									      <a ng-click="addDistortion(thought, choice)">{{choice}}</a>
+									    </li>
+									  </ul>
 
-								</li>	
-							</li>
-						</ul>
-				</li>
+									</li>	
+								</li>
+							</ul>
+					</li>
+					</div>
 				</div>
 			</div>
 

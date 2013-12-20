@@ -1,21 +1,10 @@
-<div>
-
-<table class="table">
-		<thead>
-			<tr>
-				<td>Thought</td>
-				<td>Rational Version</td>
-				<td></td>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="thought in cbtEvent.thoughts">
-				<td><p>{{thought.automaticThought}}</p></td>
-				<td>
-					<input class="form-control" type="text" ng-model="thought.rationalThought">
-				</td>
-			</tr>
-		</tbody>
-
-	</table>
+	<div class="row" ng-repeat="thought in cbtEvent.thoughts">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<p>"{{ thought.automaticThought }}"</p>
+				<p><strong>What is a more rational alternative to this thought? </strong></p>
+				<input class="form-control" type="text" ng-model="thought.rationalThought">
+			</div>
+		</div>
+	</div>
 </div>
