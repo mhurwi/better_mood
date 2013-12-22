@@ -1,37 +1,72 @@
-<div class="col-md-12">
-	<h2>Yay! You are in a better mood now!</h2>
-	<p>You started by describing this event:</p>
-	<p>{{ cbtEvent.description}}</p>
+<div class="row">
+	<div class="col-md-12">
+		<h2>Yay! You are in a better mood now!</h2>
+		<p>You started by describing this event:</p>
+		<p>{{ cbtEvent.description}}</p>
 
-	<p>And you first had these feelings:</p>
-	<ul>
-		<li ng-repeat="feeling in cbtEvent.feelings">
-			{{ feeling.name }}, intensity of {{ feeling.amountBefore }}
-		</li>
-	</ul>
+		<p>And you first had these feelings:</p>
+		<ul>
+			<li ng-repeat="feeling in cbtEvent.feelings">
+				{{ feeling.name }}, intensity of {{ feeling.amountBefore }}
+			</li>
+		</ul>
 
-	<p>You listed your automatic thoughts and spotted some distortions:</p>
-	<ul ng-repeat="thought in cbtEvent.thoughts">
-		<li>{{ thought.automaticThought }}</li>
-		<li ng-repeat="distortion in thought.distortions">
-			{{ distortion.name }}
-		</li>
-	</ul>
+		<p>You listed your automatic thoughts and spotted some distortions:</p>
+		<ul ng-repeat="thought in cbtEvent.thoughts">
+			<li>{{ thought.automaticThought }}</li>
+			<li ng-repeat="distortion in thought.distortions">
+				{{ distortion.name }}
+			</li>
+		</ul>
 
-	<p>And you were able to provide a rational alternative to each of those thoughts:</p>
-	<ul>
-		<li ng-repeat="thought in cbtEvent.thoughts">{{ thought.rationalThought }}</li>
-	</ul>
+		<p>And you were able to provide a rational alternative to each of those thoughts:</p>
+		<ul>
+			<li ng-repeat="thought in cbtEvent.thoughts">{{ thought.rationalThought }}</li>
+		</ul>
 
-	<p>Then you went back over your feelings to see how strongly you felt them after all this.</p>
+		<p>Then you went back over your feelings to see how strongly you felt them after all this.</p>
 
-	<ul>
-		<li ng-repeat="feeling in cbtEvent.feelings">
-			Now you feel {{ feeling.name }} at a {{ feeling.amountAfter }}. {{ feeling.amountBefore - feeling.amountAfter}} change!
-		</li>
-	</ul>
+		<ul>
+			<li ng-repeat="feeling in cbtEvent.feelings">
+				Now you feel {{ feeling.name }} at a {{ feeling.amountAfter }}. {{ feeling.amountBefore - feeling.amountAfter}} change!
+			</li>
+		</ul>
 
-	<p>Do you feel better? Hurray!</p>
-	<p>Give a tweet!  Post to your facebook! Tell everyone!</p>
+		<p>Do you feel better? Hurray!</p>
+	</div>
+</div>
 
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h4>What would you like to do now?</h4>
+			</div>
+			<div class="panel-body">
+				<div class="well">
+					<h5>Publish this event anonymously for other people to read</h5>
+					<a href="/events/{{ cbtEvent.id }}/save_anonymous" class="btn btn-primary">Share anonymously!</a></button>
+				</div>
+				<div class="well">
+					<h5>Go ahead and delete this event</h5>
+						<a href="/events/{{ cbtEvent.id }}/delete" class="btn btn-danger">Delete this event forever!</a></button>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h4>Sign up now to save events privately!</h4>
+			</div>
+			<div class="panel-body">
+				<div class="well">
+					<h5>Register and you get a dashboard to track events and new features as they come!</h5>
+					<a href="/users/sign_up" class="btn btn-success">Create my free account!</a></button>
+				</div>
+
+			</div>
+		</div>
+
+
+	</div>
 </div>

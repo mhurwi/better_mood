@@ -64,5 +64,9 @@ cbtAppRoutes.config(['$stateProvider', '$urlRouterProvider', function($stateProv
 				step: 7
 			}
 		})
+		.state('new.finish', {
+			url: '/finish',
+			templateUrl: "/api/templates/new.finish.html"
+		})
 
 }])

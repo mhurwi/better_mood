@@ -47,12 +47,16 @@
 	<div class="col-md-12">
 		<div class="panel panel-default">
 		<div class="panel-body">
+			<p><%= link_to "New Event", start_wizard_events_path, class: "btn btn-default btn-lg" %></p>
 			<p>As a guest, you can only see anonymous events:</p>
 			<ul>
 			<% @events.each do |e| %>
 				<li><%= link_to e.description, event_path(e) %></li>
 				<% end %>
 			</ul>
+		</div>
+		<div class="panel-footer">
+			<p><%= link_to "Sign in to save private events!", "/users/sign_in" %></p>
 		</div>
 		</div>
 	</div>	

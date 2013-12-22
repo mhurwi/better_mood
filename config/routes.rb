@@ -20,6 +20,9 @@ BetterMood::Application.routes.draw do
     end
     member do
       get "email_version" => 'events#email_version', as: "email_version"
+      get "save_anonymous" => 'events#save_anonymous', as: "save_anonymous"
+      get "save_private" => 'events#save_private', as: "save_private"
+      get "delete" => 'events#destroy'
     end
   end
 end

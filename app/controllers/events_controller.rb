@@ -49,13 +49,28 @@ class EventsController < ApplicationController
       redirect_to "/events/new#/#{@event.id.to_s}", event: @event
   end
 
-  def new
-    
+  def save_anonymous
+    @event = Event.find(params[:id])
+    @event.update_attributes(publish: true)
+    @event.save
+    redirect_to "/events", notice: "Thanks for publishing your event anonymously!"
+  end
+
+  def save_private
+    @event = Event.find(params[:id])
+    # we need to send a parameter along to the sign_up page that identifies this event...
+  end
+
+  def new 
   end
   
   def update
   end
     
   def destroy
+    @event = Event.find(params[:id])
+    @event.remove
+    redirect_to "/events", notice: "Your event has been deleted!"
   end
+
 end

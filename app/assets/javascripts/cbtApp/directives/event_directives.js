@@ -22,18 +22,16 @@ cbtApp.directive('anonymousEvents', ['$http', function($http){
 
 ///////////////
 // CRUD actions
-cbtApp.directive('deleteEvent',['$http', '$state','$route', function($http, $state,$route){
+cbtApp.directive('deleteEvent',['$http', '$state','$route', '$location', function($http, $state,$route, $location){
 	return function(scope, elem, attrs) {
 		elem.bind ("mousedown", function () {
       $http.delete(
 				"/api/events/" + attrs.id
 			)
 			.success(function(data, status, headers, config) {
-				//ATTENTION: this is messing up the view
-				//the app becomes unresponsive and weird
-				scope.removeEventData()
 				console.log(status)
 				console.log("Successfully deleted the event");
+				$state.go('new.finish');
 			})
 			.error(function(data, status, headers, config) {
 				console.log("Error, could not do this.")
