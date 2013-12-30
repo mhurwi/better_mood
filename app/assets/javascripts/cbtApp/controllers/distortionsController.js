@@ -4,9 +4,14 @@ cbtApp.controller('DistortionsCtrl', ['$scope', function($scope) {
     "Fortune telling",
     "Labeling",
     "Mind reading",
-    "Overgeneralizing"
+    "Overgeneralizing",
+    "Filtering", 
+    "Jumping to conclusions",
+    "Catasrophizing",
+    "Taking things personally",
+    "Blaming",
+    "Should-ing",
+    "All-or-nothing",
+    "Discounting the positive",
   ];
-
-  
-
 }])
