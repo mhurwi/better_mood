@@ -7,9 +7,9 @@ class EventsController < ApplicationController
     # authorize! :index
     if current_user.present?
       @events = Event.where(user_id: current_user.id.to_s)
-      @anonymous_events = Event.where(anonymous: true)
+      @anonymous_events = Event.where(anonymous: true, publish: true)
     else
-      @anonymous_events = Event.where(anonymous: true)
+      @anonymous_events = Event.where(anonymous: true, publish: true)
     end
 
   end
@@ -52,7 +52,7 @@ class EventsController < ApplicationController
 
   def save_anonymous
     @event = Event.find(params[:id])
-    @event.update_attributes(anonymous: true)
+    @event.update_attributes(anonymous: true, publish: true)
     @event.save
     redirect_to "/events", notice: "Thanks for publishing your event anonymously!"
   end
