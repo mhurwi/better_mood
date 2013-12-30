@@ -3,47 +3,83 @@
 
 
 <div class="row">
-	<h2>I am someone who experienced the following:</h2>
-	<p class="lead"><strong>Description:</strong> <%= @event.description %></p>
-	<p class="text-muted"><%= @event.created_at.strftime("%B %d, %Y") %></p>
-</div>
+	<div class="col-md-12">
+		<div class="panel panel-info">
+		<div class="panel-body">
+			<p class="text-muted">You started by describing this event:</p>
+			<blockquote><%= @event.description %></blockquote>
 
-<div class="row">
-	<p>Feelings I had</p>
-	<% @event.feelings.each do |feeling| %>
-		<div class="panel panel-default col-md-3">
+			<p class="text-muted">You were feeling:</p>
 			<ul class="list-unstyled">
-				<li><%= feeling["name"] %></li>
-				<li><%= feeling["amountBefore"] %></li>
-				<li><%= feeling["amountAfter"] %></li>
+			<% @event.feelings.each do |feeling| %>
+				<li>
+					<%= feeling["name"] %>, intensity of <%= feeling["amountBefore"] %>
+				</li>
+			<% end %>
+			</ul>
+
+			<p class="text-muted">And you thought:</p>
+			<ul class="list-unstyled">
+			<% @event.thoughts.each do |thought| %>	
+				<li><p><%= thought["automaticThought"] %></p></li>
+			<% end %>
+			</ul>
+
+			<p class="text-muted">But you noticed distortions in your thoughts:</p>
+			<ul class="list-unstyled">
+			<% @event.thoughts.each do |thought| %>	
+				<% thought["distortions"].each do |distortion| %>
+				<li class="list-unstyled">
+					<p><%=  distortion["name"] %></p>
+				</li>
+				<% end %>
+			<% end %>
+			</ul>
+
+			<p class="text-muted">You provided rational alternatives to those thoughts:</p>
+			<ul class="list-unstyled">
+				<% @event.thoughts.each do |thought| %>	
+					<% thought["distortions"].each do |distortion| %>
+						<li><%= thought["rationalThought"] %></li>
+					<% end %>
+				<% end %>
+			</ul>
+
+			<p class="text-muted">After this, you were feeling: </p>
+
+			<ul>
+				<li>
+					<% @event.feelings.each do |feeling| %>
+					<p><%= feeling["name"] %> at an intensity of <%= feeling["amountAfter"] %>.</p>
+					<p class="text-success">Reduced by <%= feeling["amountBefore"].to_i - feeling["amountAfter"].to_i %>!</p>
+					<% end %>
+				</li>
 			</ul>
 		</div>
-	<% end %>
-</div>
-
-<div class="row">
-	<% @event.thoughts.each do |thought| %>
-	<div class="panel panel-default col-md-3">
-		<p>At first I thought: <%= thought["automaticThought"] %></p>
-		<p>Distortions I spotted:</p>
-		<ul>
-		<% thought["distortions"].each do |d| %>
-			<li><%= d["name"] %></li>
-		<% end %>
-		</ul>
-		<p>Rational version:</p> 
-		<p><%= thought["rationalThought"] %></p>
+		<div class="panel-footer">
+			<p>Changing your thoughts changed your mood!</p>	
+		</div>
+		</div>
 	</div>
-	<% end %>
 </div>
 
 <div class="row">
-	<div class="panel panel-default col-md-6">
+	<div class="col-md-12">
+		<div class="panel panel-default">
 			<div class="panel-body">
-				<p>Feel better? Yep! Average intensity of feelings reduced by <strong><%= average_feeling_reduction(@event) %></strong></p>
+				<p>Average intensity of feelings reduced by <strong><%= average_feeling_reduction(@event) %></strong></p>
 			</div>
 		</div>
 	</div>
 </div>
+
+<div class="row">
+	<div class="col-md-12">
+		<p><%= link_to "Back to events list", events_path, class: "btn btn-primary" %>    <%= link_to "Delete this event", delete_event_path(@event), class: "btn btn-danger" %></p>
+	</div>
+</div>
+
+
+
 
 <p><%# TODO: neat feature, or stupid? link_to "Email version", email_version_event_path(@event) %></p>

@@ -1,0 +1,112 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h2>Are you in a better mood now?</h2>
+		</div>
+		<div class="panel-body">
+			<p class="text-muted">You started by describing this event:</p>
+			<blockquote>{{ cbtEvent.description}}</blockquote>
+
+			<p class="text-muted">You were feeling:</p>
+			<ul class="list-unstyled">
+				<li ng-repeat="feeling in cbtEvent.feelings">
+					{{ feeling.name }}, intensity of {{ feeling.amountBefore }}
+				</li>
+			</ul>
+
+			<p class="text-muted">And you thought:</p>
+			<ul class="list-unstyled" ng-repeat="thought in cbtEvent.thoughts">
+				<li><p>{{ thought.automaticThought }}</p></li>
+			</ul>
+
+			<p class="text-muted">But you noticed distortions in your thoughts:</p>
+			<ul class="list-unstyled">
+				<li class="list-unstyled" ng-repeat="thought in cbtEvent.thoughts">
+					<p ng-repeat="distortion in thought.distortions">{{ distortion.name }}</p>
+				</li>
+			</ul>
+
+			<p class="text-muted">You provided rational alternatives to those thoughts:</p>
+			<ul class="list-unstyled">
+				<li ng-repeat="thought in cbtEvent.thoughts">{{ thought.rationalThought }}</li>
+			</ul>
+
+			<p class="text-muted">After this, you were feeling: </p>
+
+			<ul>
+				<li ng-repeat="feeling in cbtEvent.feelings">
+					<p>{{ feeling.name }} at an intensity of {{ feeling.amountAfter }}.</p>
+					<p class="text-success">Reduced by {{ feeling.amountBefore - feeling.amountAfter}}!</p>
+				</li>
+			</ul>
+		</div>
+		<div class="panel-footer">
+			<p>Good job! Changing your thoughts changed your mood!</p>	
+		</div>
+		</div>
+	</div>
+</div>
+
+<% if current_user.present? %>
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel">
+			<div class="panel-body">
+				<p>Help other people learn from your example and publish this event anonymously: </p>
+				<a class="btn btn-warning" href="/events/{{ cbtEvent.id }}/save_anonymous">Publish anonymously</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel">
+			<div class="panel-body">
+				<p>I'm done! Keep this event private and go to my dashboard.</p>
+				<%= link_to "Go to dashboard", dashboard_path, class: "btn btn-success" %>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<% else %>
+<%# GUEST %>
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h4>What would you like to do now?</h4>
+			</div>
+			<div class="panel-body">
+				<div class="well">
+					<h5>Publish this event anonymously for other people to read</h5>
+					<a href="/events/{{ cbtEvent.id }}/save_anonymous" class="btn btn-primary">Share anonymously!</a></button>
+				</div>
+				<div class="well">
+					<h5>Go ahead and delete this event</h5>
+						<a href="/events/{{ cbtEvent.id }}/delete" class="btn btn-danger">Delete this event forever!</a></button>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h4>Sign up now to save events privately!</h4>
+			</div>
+			<div class="panel-body">
+				<div class="well">
+					<h5>Register and you get a dashboard to track events and new features as they come!</h5>
+					<a href="/users/sign_up" class="btn btn-success">Create my free account!</a></button>
+				</div>
+
+			</div>
+		</div>
+
+
+	</div>
+</div>
+<% end %>
